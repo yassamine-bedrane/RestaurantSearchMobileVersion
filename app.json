@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "joyous-carrot",
-    "slug": "snack-45824469-c9ae-40b0-8faf-20a4d13b505c",
+    "name": "RestaurantSearchMobileVersion",
+    "slug": "restaurant-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

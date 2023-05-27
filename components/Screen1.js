@@ -174,40 +174,38 @@ const Screen1 = () => {
       ) : null}
 
       <ScrollView style={styles.resultsContainer}>
-        {restaurants.map((restaurant) => (
-          <View key={restaurant._id} style={styles.restaurantCard}>
-            <Image
-              source={{ uri: restaurant.photo[0] }}
-              style={styles.restaurantThumbnail}
-            />
-            <View style={styles.restaurantCardContent}>
-              <Text style={styles.restaurantName}>{restaurant.name}</Text>
-              <Text style={styles.restaurantDetails}>
-                Zone: {restaurant.zone}
-              </Text>
-              <Text style={styles.restaurantDetails}>
-                Opening Hours: {restaurant.ouvert}
-              </Text>
-              <TouchableOpacity
-                style={styles.viewImagesButton}
-                onPress={() => handleViewImages(restaurant._id)}
-              >
-                <Text style={styles.viewImagesButtonText}>View Images</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.viewImagesButton}
-                onPress={() =>
-                  Linking.openURL(
-                    `https://www.google.com/maps/dir/?api=1&destination=${restaurant.latitude},${restaurant.longitude}&travelmode=driving`
-                  )
-                }
-              >
-                <Text style={styles.viewImagesButtonText}>Itineraire</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        ))}
-      </ScrollView>
+  {restaurants.map((restaurant) => (
+    <View key={restaurant._id} style={styles.restaurantCard}>
+      <Image
+        source={{ uri: restaurant.photo[0] }}
+        style={styles.restaurantThumbnail}
+      />
+      <View style={styles.restaurantCardContent}>
+        <Text style={styles.restaurantName}>{restaurant.name}</Text>
+        <Text style={styles.restaurantDetails}>
+          Opening Hours: {restaurant.ouvert} - {restaurant.fermé}
+        </Text>
+        <TouchableOpacity
+          style={styles.viewImagesButton}
+          onPress={() => handleViewImages(restaurant._id)}
+        >
+          <Text style={styles.viewImagesButtonText}>Voir Images</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.viewImagesButton}
+          onPress={() =>
+            Linking.openURL(
+              `https://www.google.com/maps/dir/?api=1&destination=${restaurant.latitude},${restaurant.longitude}&travelmode=driving`
+            )
+          }
+        >
+          <Text style={styles.viewImagesButtonText}>Itineraire</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  ))}
+</ScrollView>
+
       {selectedRestaurant && (
         <ImageModal
           restaurant={selectedRestaurant}
